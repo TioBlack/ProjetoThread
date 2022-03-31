@@ -19,9 +19,9 @@ class Trem:
         self.timee2 = 0
         self.j = 0
         self.trem = {'viajando': False,
-         'limite_caixas': 3,
+         'limite_caixas': 0,
          'caixas': 0,
-         'tempo_viagem': 5000,
+         'tempo_viagem': 0,
          'carregando': False,
          'descarregando': False
           }
@@ -66,7 +66,7 @@ class Trem:
             self.timee2 = 0
             self.timee2 = round(time.time() * 1000)
             print("VIAJANDO PARA B")
-            while round(time.time() * 1000) - self.timee2 < self.trem['tempo_viagem']:
+            while round(time.time() * 1000) - self.timee2 < (self.trem['tempo_viagem'])*1000:
                 self.j += 1
             
             print("CHEGOU EM B")
@@ -80,7 +80,7 @@ class Trem:
             self.timee2 = 0
             self.timee2 = round(time.time() * 1000)
             print("VIAJANDO PARA A")
-            while round(time.time() * 1000) - self.timee2 < self.trem['tempo_viagem']:
+            while round(time.time() * 1000) - self.timee2 < (self.trem['tempo_viagem'])*1000:
                 self.j += 1
             
             print("CHEGOU EM A")
@@ -131,7 +131,7 @@ class Empacotador:
             self.k = 0
             print("empacotando")
             #print(self.timee)
-            while round(time.time() * 1000) - self.timee < self.empacotadores[idd]['tempo_empacotando']:
+            while round(time.time() * 1000) - self.timee < (self.empacotadores[idd]['tempo_empacotando']) * 1000:
                 self.k += 1
                 self.empacotadores[idd]['empacotando'] = True
             if deposito.deposito['caixas_no_deposito'] < deposito.deposito['limite_deposito']:
@@ -150,18 +150,7 @@ trem = Trem()
 
 
 
-deposito.deposito["caixas_no_deposito"] = 0
-deposito.deposito["limite_deposito"] = 10
-empacotador.incrementa_empacotador()
-empacotador.incrementa_empacotador()
-empacotador.incrementa_empacotador()
-empacotador.incrementa_empacotador()
-empacotador.incrementa_empacotador()
-empacotador.empacotadores[0]['tempo_empacotando'] = 5000
-empacotador.empacotadores[1]['tempo_empacotando'] = 2000
-empacotador.empacotadores[2]['tempo_empacotando'] = 4000
-empacotador.empacotadores[3]['tempo_empacotando'] = 9000
-empacotador.empacotadores[4]['tempo_empacotando'] = 3000
+
 
 while True:
     pass
